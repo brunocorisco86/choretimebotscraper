@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  chore-scraper:
+    build: .
+    container_name: chore_scraper_app
+    restart: always
+    volumes:
+      - ./app:/app/app
+      - /mnt/choretime_scraper:/app/data  # Mapeia o disco externo para persistência do SQLite e CSVs
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Sao_Paulo  # Define o fuso horário correto para os logs e agendamentos
+      - CHROME_BIN=/usr/bin/chromium
+      - CHROME_DRIVER=/usr/bin/chromedriver
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Opcional: Se você quiser rodar o Postgres localmente no RPi também
+  # postgres:
+  #   image: postgres:13-alpine
+  #   restart: always
+  #   environment:
+  #     POSTGRES_DB: chore_db
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #   volumes:
+  #     - /mnt/choretime_scraper/pgdata:/var/lib/postgresql/data
