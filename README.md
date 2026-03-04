@@ -22,19 +22,8 @@ chore_scraper/
 
 ## Configuração
 
-1.  **Variáveis de Ambiente (`.env`):**
-    Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
-    ```dotenv
-    CHORE_USER=Junior
-    CHORE_PASS=Junior1281
-    TELEGRAM_TOKEN=SEU_BOT_TOKEN_TELEGRAM
-    CHAT_ID=SEU_CHAT_ID_TELEGRAM
-    DB_PATH=/app/data/chore_data.db
-    PG_URI=postgresql://user:password@host:port/dbname # Opcional: URI do seu PostgreSQL externo
-    ```
-    *   Substitua `SEU_BOT_TOKEN_TELEGRAM` pelo token do seu bot do Telegram.
-    *   Substitua `SEU_CHAT_ID_TELEGRAM` pelo ID do chat onde você deseja receber as notificações. Você pode obter seu ID falando com o bot `@userinfobot` no Telegram.
-    *   Se você não for usar PostgreSQL, pode deixar `PG_URI` em branco ou remover a linha.
+1.  **Variáveis de Ambiente:**
+    Renomeie o arquivo `.env.example` para `.env` e preencha as variáveis de ambiente necessárias, seguindo o padrão fornecido no `.env.example`.
 
 2.  **XPaths no `scraper.py`:**
     Os XPaths para extração dos dados no arquivo `app/scraper.py` foram baseados nas informações fornecidas. É **crucial** que você os verifique e ajuste, se necessário, inspecionando os elementos na página web do ChoreTime usando as ferramentas de desenvolvedor do seu navegador. O site pode ter alterações que invalidem os XPaths atuais.
